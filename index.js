@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = 5001;
 const bodyParser = require('body-parser');
 const { User } = require('./models/User');
+const config = require('./config/key');
 
 //application/x-www-form-urlencode
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,12 +14,12 @@ app.use(bodyParser.json());
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 mongoose
-  .connect('mongodb+srv://hyeri:qlqjs1234@boilerplate.8kofbi0.mongodb.net/?retryWrites=true&w=majority', {})
+  .connect(config.mongoURI, {})
   .then(() => console.log('mongooDB connected'))
   .catch((err) => console.log(err));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World! 안녕하세요');
 });
 
 //회원가입을 위한 router만들기
