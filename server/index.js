@@ -25,9 +25,7 @@ app.get('/', (req, res) => {
   res.send('Hello World! 안녕하세요');
 });
 
-app.get('/api/hello', (req, res) => {
-  res.send('안녕');
-});
+app.get('/api/hello', (req, res) => res.send('Hello World!~~ '));
 
 //회원가입을 위한 router만들기
 app.post('/api/users/register', (req, res) => {
