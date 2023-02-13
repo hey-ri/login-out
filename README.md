@@ -26,3 +26,4 @@ node.js, express.js, mongoDB를 이용하여 로그인 페이지 서버 만들�
 - bcrypt : 비밀번호를 암호화하여 데이터 베이스에 저장하도록 함 `npm i bcrypt --save`
 - jsonwebtoken : 토큰 생성을 위한 라이브러리 `npm i jsonwebtoken --save`
 - cookie-parser : express.js에서 지원하는 요청된 쿠키를 쉽게 추출할 수 있도록 도와주는 것 `npm i cookie-parser --save`
+- concurrently : 서버와 클라이언트를 터미널에서 두번으로 나눠 켜야 하는 것을 한번에 켤 수 있게 도와줌 `npm i concurrently`
