@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
 
-function Login() {
+function Login(props) {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
@@ -29,6 +29,8 @@ function Login() {
     dispatch(loginUser(body)).then((res) => {
       if (res.payload.loginSuccess) {
         props.history.push('/');
+      } else {
+        alert('Error');
       }
     });
   };
