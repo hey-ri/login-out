@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
+import { useNavigate } from 'react-router-dom';
 
-function Login(props) {
+function Login() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onEmailHandler = (e) => {
-    setEmail(e.target.value);
-    console.log(e.target.value);
+    setEmail(e.currentTarget.value);
   };
 
   const onPasswordHandler = (e) => {
-    setPassword(e.target.value);
-    console.log(e.target.value);
+    setPassword(e.currentTarget.value);
   };
 
   const onSubmitHandler = (e) => {
@@ -28,9 +27,10 @@ function Login(props) {
 
     dispatch(loginUser(body)).then((res) => {
       if (res.payload.loginSuccess) {
-        props.history.push('/');
+        navigate('/');
       } else {
         alert('Error');
+        console.log(res);
       }
     });
   };

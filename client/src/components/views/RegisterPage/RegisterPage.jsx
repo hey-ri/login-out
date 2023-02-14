@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../../_actions/user_action';
 
-function RegisterPage(props) {
+function RegisterPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,12 +37,11 @@ function RegisterPage(props) {
       email: email,
       name: name,
       password: password,
-      // confirmPassword: confirmPassword,
     };
 
     dispatch(registerUser(body)).then((res) => {
       if (res.payload.success) {
-        console.log('회원가입 되었습니다.');
+        navigate('/login');
       } else {
         alert('failed to sign up');
         console.log(res);
@@ -50,7 +51,13 @@ function RegisterPage(props) {
 
   return (
     <div>
-      <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column' }}>
+      <form
+        onSubmit={onSubmitHandler}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <label htmlFor="email">Email</label>
         <input type="email" name="email" value={email} onChange={onEmailHandler} />
 
